@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #downloadButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #progressBar {
+            width: 300px;
+            height: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Download Dialog dengan Progress Bar</h1>
+
+    <button id="downloadButton" onclick="startDownload()">Start Download</button>
+
+    <div id="progressBarContainer" style="display: none;">
+        <p>Downloading...</p>
+        <progress id="progressBar" value="0" max="100"></progress>
+        <p id="progressStatus">0%</p>
+    </div>
+
+    <script>
+        function startDownload() {
+        // Show progress bar container
+        document.getElementById('progressBarContainer').style.display = 'block';
+
+        // Simulate download progress
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+        const progressStatus = document.getElementById('progressStatus');
+
+        const interval = setInterval(() => {
+            progress += 10;
+            progressBar.value = progress;
+            progressStatus.textContent = progress + '%';
+
+            // Check if download is complete
+            if (progress >= 100) {
+                clearInterval(interval);
+                progressStatus.textContent = 'Download Complete!';
+                setTimeout(() => {
+                    // Hide progress bar container after 1 second
+                    document.getElementById('progressBarContainer').style.display = 'none';
+                    // Reset progress bar for future downloads
+                    progressBar.value = 0;
+                    progressStatus.textContent = '0%';
+                }, 1000);
+            }
+        }, 500); // Update progress every 500 milliseconds (0.5 seconds)
+    }
+    </script>
+</body>
+</html>
