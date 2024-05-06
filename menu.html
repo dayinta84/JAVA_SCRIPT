@@ -1,72 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery Menu Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        .menu-item {
-            display: inline-block;
-            padding: 10px;
-            cursor: pointer;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-        }
-    </style>
+	<title>Menu</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		#menu {
+			background-color: #311ac6;
+			overflow: hidden;
+		}
+		#menu a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		#menu a:hover {
+			background-color: #ddd;
+			color: rgb(0, 0, 0);
+		}
+	</style>
 </head>
 <body>
+	<div id="menu">
+		<a href="../UTS WEB/index.html">Home</a>
+		<a href="../UTS WEB/about.html">About</a>
+		<a href="../UTS WEB/profil.html">Profil</a>
+		<a href="../UTS WEB/hobi.html">Hobi</a>
+	</div>
 
-<h1>jQuery Menu Example</h1>
+	<script>
+		$(document).ready(function() {
+			// Add a click event listener to the menu items
+			$('#menu a').click(function() {
+				// Remove the active class from all menu items
+				$('#menu a').removeClass('active');
 
-<div class="menu">
-    <div class="menu-item" id="item1">Menu 1</div>
-    <div class="menu-item" id="item2">Menu 2</div>
-    <div class="menu-item" id="item3">Menu 3</div>
-</div>
-
-<div class="submenu" id="submenu1">
-    <p>Submenu for Menu 1</p>
-    <ul>
-        <li>Subitem 1</li>
-        <li>Subitem 2</li>
-        <li>Subitem 3</li>
-    </ul>
-</div>
-
-<div class="submenu" id="submenu2">
-    <p>Submenu for Menu 2</p>
-    <ul>
-        <li>Subitem A</li>
-        <li>Subitem B</li>
-        <li>Subitem C</li>
-    </ul>
-</div>
-
-<div class="submenu" id="submenu3">
-    <p>Submenu for Menu 3</p>
-    <ul>
-        <li>Subitem X</li>
-        <li>Subitem Y</li>
-        <li>Subitem Z</li>
-    </ul>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="script.js"></script>
-
+				// Add the active class to the clicked menu item
+				$(this).addClass('active');
+			});
+		});
+	</script>
 </body>
 </html>
